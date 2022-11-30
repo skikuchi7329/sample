@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+
 function App() {
   const [nameText, setNameText] = useState("");
-  const [nameList] = React.useState([]);
+  const [nameList, setNewNameList] = React.useState([]);
 
   const onChangeNameText = (event) => {
     setNameText(event.target.value);
@@ -16,6 +17,10 @@ function App() {
   
     setNameText("");
   };
+
+  const onClickReset = () => {
+    setNewNameList([]);
+  }
 
   const roulette = () => {
     const random = Math.floor(Math.random() * nameList.length);
@@ -32,6 +37,7 @@ function App() {
       <h1>ルーレット</h1>
       <input value={nameText} onChange={onChangeNameText} />
       <button onClick={onClickAdd}>追加</button>
+      <button onClick={onClickReset}>リセット</button>
     </div>
     <div>
       <ul>
